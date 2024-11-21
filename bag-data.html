@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KPU 2018</title>
+        <link rel="icon" type="image/x-icon" href="sources/logo-garuda.png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-image: url('sources/bg2.jpg');
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Montserrat', sans-serif;
+            }
+            h1 {
+                background-image: url('sources/batik.jpg');
+                background-size: cover;
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent
+            }
+            table {
+              width: 100%; 
+              margin: 20px 0; 
+              border-collapse: collapse;
+                max-width: 1200px; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 8px;
+                overflow: hidden; 
+            }
+            .table th, .table td {
+                padding: 12px; 
+                text-align: left;
+                border: 1px solid #dee2e6;
+            }
+            .table th {
+                background-color: #495057; 
+                color: #f8f9fa; 
+                font-weight: bold;
+                text-transform: uppercase; 
+                text-align: center;
+                vertical-align: middle;
+            }
+            .table tbody {        
+              background-color: #f8f9fa96; 
+
+            }
+            
+            .table tbody tr:hover {
+              background-color: #46494d57;
+
+            }
+            #data-table {
+              width: 100%; 
+              background-image: url('sources/batik.jpg');
+            }
+            .navbar-logo {
+                width: 50px; 
+                height: auto;
+            }
+            .navbar-logo2 {
+                width: 30px; 
+                height: auto;
+            }
+            .table-responsive {
+                overflow-x: auto; 
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+            .table-responsive.loaded {
+                opacity: 1;
+            }
+            #scrollToTopBtn {
+                position: fixed;
+                bottom: 50px;
+                right: 30px;
+                display: none;
+                background-color: rgba(233, 5, 5, 0.904);
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 15px;
+                cursor: pointer;
+                z-index: 1000;
+            }
+            #scrollToTopBtn:hover {
+                background-color: rgba(223, 8, 8, 0.774);
+            }
+
+            @media (max-width: 768px) {
+                table {
+                    display: block; 
+                    overflow-x: auto; 
+                    white-space: nowrap; 
+                }
+                .header {
+                    font-size: 20px;
+                }
+                
+                #data-table {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(38, 39, 43);">
+      <img src="sources/logo-garuda.png" alt="Logo Garuda" class="ml-auto navbar-logo2" style="padding-right: 10px;">
+      <a class="navbar-brand" href="#">Pilkada 2018</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Beranda</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="bag-data.html">Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bag-statistik.html">Statistik</a>
+                </li>
+            </ul>
+            <img src="sources/bendera.gif" alt="Logo Indonesia" class="ml-auto navbar-logo">
+
+        </div>
+    </nav>
+    <div class="container-fluid mt-5" style="padding: 20px;">
+      <h1 class="text-center mb-4" style="font-size: 45px;">Daftar Calon Terpilih Hasil <br> Penetapan Suara Pilkada 2018</h1>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover mt-4 mx-auto" id="data-table" >
+          <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>Kode Provinsi</th>
+                <th>Provinsi</th>
+                <th>Kode Kabupaten/Kota</th>
+                <th>Kabupaten/Kota</th>
+                <th>Nama Paslon</th>
+                <th>Parpol Pendukung</th>
+                <th>Perolehan Suara</th>
+                <th>Total Suara</th>
+                <th>Presentase</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+  <button id="scrollToTopBtn" style="display: none;">Kembali ke Atas</button>
+
+  <footer style="background-color: rgb(38, 39, 43); color: #fff; text-align: center; padding: 20px; position: relative; bottom: 0; width: 100%;">
+      <p>&copy; 2024 | Pilkada 2018. All rights reserved.</p>
+      <p>Created by Kelompok K²SN</p>
+  </footer>
+
+    <script>
+        const jsonData = [
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 1,
+            "": 11,
+            "__1": "ACEH",
+            "__2": 1101,
+            "__3": "ACEH SELATAN",
+            "__4": "2. H. AZWIR, S. Sos/Tgk. AMRAN",
+            "__5": "Hanura, PDIP, Partai Nasional Aceh, PKB",
+            "__6": 46.667,
+            "__7": 130.18,
+            "__8": "35.85%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 2,
+            "": 11,
+            "__1": "ACEH",
+            "__2": 1118,
+            "__3": "PIDIE JAYA",
+            "__4": "2. AIYUB BIN ABBAS/SAID MULYADI, SE, M.Si",
+            "__5": "PPP, PDIP, PKS, Gerindra, Partai Aceh, PAN, Demokrat, PKPI",
+            "__6": 41.115,
+            "__7": 79.665,
+            "__8": "51.61%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 3,
+            "": 11,
+            "__1": "ACEH",
+            "__2": 1175,
+            "__3": "KOTA SUBULUSSALAM",
+            "__4": "5. H. AFFAN ALFIAN, SE/Drs. SALMAZA, M.AP",
+            "__5": "Partai Nasional Aceh, Hanura, PKPI, PAN",
+            "__6": 19.211,
+            "__7": 46.183,
+            "__8": "41.60%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 4,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1202,
+            "__3": "TAPANULI UTARA",
+            "__4": "1. Drs. NIKSON NABABAN, M.Si/SARLANDY HUTABARAT, SH",
+            "__5": "Nasdem, PDIP, Golkar, PAN, PKB",
+            "__6": 69.375,
+            "__7": 150.431,
+            "__8": "46.12%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 5,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1205,
+            "__3": "LANGKAT",
+            "__4": "1. Terbit Rencana Perangin Angin/H. Syah Afandin, SH",
+            "__5": "Hanura, PPP, Golkar, PAN, PBB, PDIP, Gerindra, PKB",
+            "__6": 242.273,
+            "__7": 460.074,
+            "__8": "52.66%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 6,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1207,
+            "__3": "DELI SERDANG",
+            "__4": "1. H. ASHARI TAMBUNAN/H.M ALI YUSUF SIREGAR",
+            "__5": "PKB, Golkar, Hanura, Nasdem, PDIP, PAN, PKS, PPP, Gerindra, Demokrat, PKPI",
+            "__6": 538.238,
+            "__7": 654.431,
+            "__8": "82.25%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 7,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1211,
+            "__3": "DAIRI",
+            "__4": "2. Dr. EDDY KELENG ATE BERUTU/JIMMY ANDREA LUKITA SIHOMBING, SH",
+            "__5": "PKPI, Hanura, Demokrat, Gerindra, PDIP, Nasdem",
+            "__6": 86.838,
+            "__7": 147.484,
+            "__8": "58.88%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 8,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1219,
+            "__3": "BATU BARA",
+            "__4": "3. IR. H. ZAHIR, M.AP/OKY IQBAL FRIMA, SE",
+            "__5": "PDIP, PBB, PPP, Gerindra",
+            "__6": 73.078,
+            "__7": 174.84,
+            "__8": "41.80%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 9,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1220,
+            "__3": "PADANG LAWAS UTARA",
+            "__4": "1. ANDAR AMIN HARAHAP, S.STP, M.Si/H. HARIRO HARAHAP, SE, M.Si",
+            "__5": "Nasdem, Gerindra, Golkar, PKB, PAN, Demokrat, PKPI, PBB, PPP, Hanura, PDIP",
+            "__6": 86.915,
+            "__7": 108.474,
+            "__8": "80.13%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 10,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1221,
+            "__3": "PADANG LAWAS",
+            "__4": "2. ALI SUTAN HARAHAP/drg. H.AHMAD ZARNAWI PASARIBU,C.Ht.,MM.,M.Si",
+            "__5": "PPP, PBB, PKPI, Nasdem, PDIP, Gerindra, Golkar, PKB, Hanura, PAN",
+            "__6": 66.464,
+            "__7": 116.714,
+            "__8": "56.95%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 11,
+            "": 12,
+            "__1": "SUMATERA UTARA",
+            "__2": 1277,
+            "__3": "KOTA PADANG SIDIMPUAN",
+            "__4": "3. IRSAN EFENDI NASUTION, SH/Ir. H. ARWIN SIREGAR, MM",
+            "__5": "-",
+            "__6": 43.727,
+            "__7": 98.805,
+            "__8": "44.26%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 12,
+            "": 13,
+            "__1": "SUMATERA BARAT",
+            "__2": 1371,
+            "__3": "KOTA PADANG",
+            "__4": "2. H. MAHYELDI, SP/HENDRI SEPTA, B.BUS (Acc)., MIB",
+            "__5": "PKS, PAN",
+            "__6": 212.526,
+            "__7": 337.764,
+            "__8": "62.92%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 13,
+            "": 13,
+            "__1": "SUMATERA BARAT",
+            "__2": 1373,
+            "__3": "KOTA SAWAHLUNTO",
+            "__4": "3. DERI ASTA, SH/ZOHIRIN SAYUTI, SE",
+            "__5": "PPP, PAN, Nasdem",
+            "__6": 16.319,
+            "__7": 34.659,
+            "__8": "47.08%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 14,
+            "": 13,
+            "__1": "SUMATERA BARAT",
+            "__2": 1374,
+            "__3": "KOTA PADANG PANJANG",
+            "__4": "4. FADLY AMRAN/Drs. ASRUL",
+            "__5": "Golkar, PDIP",
+            "__6": 10.191,
+            "__7": 25.725,
+            "__8": "39.62%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 15,
+            "": 14,
+            "__1": "RIAU",
+            "__2": 1404,
+            "__3": "INDRAGIRI HILIR",
+            "__4": "3. Drs. H. MUHAMMAD WARDAN, MP/H. SYAMSUDDIN UTI",
+            "__5": "PKS, Golkar, Demokrat, PAN",
+            "__6": 133.719,
+            "__7": 259.255,
+            "__8": "51.58%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 16,
+            "": 15,
+            "__1": "JAMBI",
+            "__2": 1501,
+            "__3": "KERINCI",
+            "__4": "2. Dr. H. ADIROZAL, M.Si/Ir. H. AMI TAHER",
+            "__5": "PPP, PAN",
+            "__6": 55.597,
+            "__7": 148.272,
+            "__8": "37.50%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 17,
+            "": 15,
+            "__1": "JAMBI",
+            "__2": 1502,
+            "__3": "MERANGIN",
+            "__4": "2. Dr. H. AL HARIS, S.Sos., MH./MASHURI, S.Pd., MM.",
+            "__5": "Golkar, PPP, Hanura",
+            "__6": 84.166,
+            "__7": 187.839,
+            "__8": "44.81%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 18,
+            "": 15,
+            "__1": "JAMBI",
+            "__2": 1571,
+            "__3": "KOTA JAMBI",
+            "__4": "2. DR. H. Syarif Fasha, ME/DR. dr. H. Maulana, MKM",
+            "__5": "Golkar, Nasdem, PKPI, PBB, PKS, PKB, PPP, Hanura, Gerindra, Demokrat",
+            "__6": 147.652,
+            "__7": 265.087,
+            "__8": "55.70%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 19,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1602,
+            "__3": "OGAN KOMERING ILIR",
+            "__4": "1. H. ISKANDAR, SE/H. M. DJA'FAR SHODIQ",
+            "__5": "Nasdem, Demokrat, PBB, PKB, PAN",
+            "__6": 168.508,
+            "__7": 360.058,
+            "__8": "46.80%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 20,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1603,
+            "__3": "MUARA ENIM",
+            "__4": "4. Ir. H. AHMAD YANI.,MM/H. JUARSAH, SH",
+            "__5": "Hanura, PKB, Demokrat",
+            "__6": 67.522,
+            "__7": 199.678,
+            "__8": "33.82%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 21,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1604,
+            "__3": "LAHAT",
+            "__4": "3. CIK UJANG, SH/H. HARYANTO, SE, MM",
+            "__5": "Hanura, Demokrat, Nasdem",
+            "__6": 91.031,
+            "__7": 210.037,
+            "__8": "43.34%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 22,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1607,
+            "__3": "BANYUASIN",
+            "__4": "5. H. ASKOLANI, SH., MH/H. SLAMET",
+            "__5": "PPP, PDIP, Demokrat, Nasdem, Gerindra",
+            "__6": 131.593,
+            "__7": 385.931,
+            "__8": "34.10%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 23,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1611,
+            "__3": "EMPAT LAWANG",
+            "__4": "2. H. JONCIK MUHAMMAD, S.Si./YULIUS MAULANA",
+            "__5": "PKPI, PDIP, PAN, Demokrat, PKB, PPP",
+            "__6": 81.396,
+            "__7": 135.019,
+            "__8": "60.28%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 24,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1671,
+            "__3": "KOTA PALEMBANG",
+            "__4": "1. H. HARNOJOYO, S.Sos/FITRIANTI AGUSTINDA, S.H.",
+            "__5": "Demokrat, PKB, PDIP, PBB, PAN",
+            "__6": 351.24,
+            "__7": 757.156,
+            "__8": "46.39%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 25,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1672,
+            "__3": "KOTA PAGAR ALAM",
+            "__4": "2. ALPIAN MASKONI, SH/MUHAMMAD FADLI, SE",
+            "__5": "PKB, Nasdem",
+            "__6": 23.275,
+            "__7": 83.719,
+            "__8": "27.80%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 26,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1673,
+            "__3": "KOTA LUBUKLINGGAU",
+            "__4": "2. Drs. H. S.N.PRANA PUTRA SOHE, MM/H. SULAIMAN KOHAR, SH, MH",
+            "__5": "Nasdem, Gerindra, PKB, Hanura, PBB, Golkar, Demokrat, PKS",
+            "__6": 62.917,
+            "__7": 111.982,
+            "__8": "56.18%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 27,
+            "": 16,
+            "__1": "SUMATERA SELATAN",
+            "__2": 1674,
+            "__3": "KOTA PRABUMULIH",
+            "__4": "1. Ir. H. RIDHO YAHYA, M.M./H. ANDRIANSYAH FIKRI, S.H.",
+            "__5": "PKPI, Golkar, PDIP, Nasdem, PKB, Hanura, Demokrat, PAN, PPP, PBB",
+            "__6": 74.723,
+            "__7": 94.275,
+            "__8": "79.26%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 28,
+            "": 17,
+            "__1": "BENGKULU",
+            "__2": 1771,
+            "__3": "KOTA BENGKULU",
+            "__4": "3. H. HELMI, S.E./DEDY WAHYUDI, S.E, M.M",
+            "__5": "PAN, Demokrat, Gerindra",
+            "__6": 44.449,
+            "__7": 133.415,
+            "__8": "33.32%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 29,
+            "": 18,
+            "__1": "LAMPUNG",
+            "__2": 1803,
+            "__3": "LAMPUNG UTARA",
+            "__4": "3. H. AGUNG ILMU MANGKUNEGARA, S.STP. MH./H. BUDI UTOMO, SE. MM",
+            "__5": "Nasdem, PAN, Gerindra, PKS",
+            "__6": 162.426,
+            "__7": 319.45,
+            "__8": "50.85%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 30,
+            "": 18,
+            "__1": "LAMPUNG",
+            "__2": 1806,
+            "__3": "TANGGAMUS",
+            "__4": "1. Hj. DEWI HANDAJANI, SE, MM/Hi. AM. SYAFI?I, S.Ag",
+            "__5": "PKS, Nasdem, PDIP, PAN",
+            "__6": 170.57,
+            "__7": 304.77,
+            "__8": "55.97%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 31,
+            "": 19,
+            "__1": "KEPULAUAN BANGKA BELITUNG",
+            "__2": 1901,
+            "__3": "BANGKA",
+            "__4": "2. MULKAN, SH. MH/SYAHBUDIN, S.IP",
+            "__5": "PKPI, PDIP",
+            "__6": 59.334,
+            "__7": 121.904,
+            "__8": "48.67%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 32,
+            "": 19,
+            "__1": "KEPULAUAN BANGKA BELITUNG",
+            "__2": 1902,
+            "__3": "BELITUNG",
+            "__4": "4. H. SAHANI SALEH, S.Sos/ISYAK MEIROBIE, S.Sn",
+            "__5": "Nasdem, Gerindra",
+            "__6": 28.366,
+            "__7": 85.96,
+            "__8": "33.00%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 33,
+            "": 19,
+            "__1": "KEPULAUAN BANGKA BELITUNG",
+            "__2": 1971,
+            "__3": "KOTA PANGKALPINANG",
+            "__4": "3. H. MAULAN AKLIL, S.I.P., M.Si./MUHAMMAD SOPIAN, B.A.",
+            "__5": "PKS, PDIP, Nasdem",
+            "__6": 31.792,
+            "__7": 76.449,
+            "__8": "41.59%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 34,
+            "": 21,
+            "__1": "KEPULAUAN RIAU",
+            "__2": 2172,
+            "__3": "KOTA TANJUNGPINANG",
+            "__4": "1. H. SYAHRUL, S.Pd.SD/RAHMA, S.Ip",
+            "__5": "Gerindra, Golkar",
+            "__6": 42.559,
+            "__7": 82.719,
+            "__8": "51.45%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 35,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3201,
+            "__3": "BOGOR",
+            "__4": "2. ADE YASIN/H. IWAN SETIAWAN, SE",
+            "__5": "Gerindra, PPP, PKB",
+            "__6": 912.221,
+            "__7": "2.218.296",
+            "__8": "41.12%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 36,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3205,
+            "__3": "GARUT",
+            "__4": "1. H. RUDY GUNAWAN, SH., MH., MP/HELMI BUDIMAN",
+            "__5": "Nasdem, Gerindra, PKS",
+            "__6": 428.113,
+            "__7": "1.195.911",
+            "__8": "35.80%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 37,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3207,
+            "__3": "CIAMIS",
+            "__4": "1. H. HERDIAT SUNARYA/YANA DIANA PUTRA",
+            "__5": "Demokrat, Gerindra, PBB, Nasdem, PAN, PKS",
+            "__6": 415.767,
+            "__7": 697.714,
+            "__8": "59.59%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 38,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3208,
+            "__3": "KUNINGAN",
+            "__4": "3. H. ACEP PURNAMA, S.H., M.H./MUHAMMAD RIDHO SUGANDA, S.H., M.Si.",
+            "__5": "PDIP, Nasdem",
+            "__6": 233.539,
+            "__7": 571.712,
+            "__8": "40.85%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 39,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3209,
+            "__3": "CIREBON",
+            "__4": "2. DR. H. SUNJAYA PURWADISASTRA, M.M., M.SI./Drs. H. IMRON",
+            "__5": "PDIP",
+            "__6": 319.63,
+            "__7": "1.000.519",
+            "__8": "31.95%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 40,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3210,
+            "__3": "MAJALENGKA",
+            "__4": "2. Dr. H. KARNA SOBAHI, M.M.Pd./TARSONO D. MARDIANA",
+            "__5": "PDIP",
+            "__6": 332.087,
+            "__7": 714.521,
+            "__8": "46.48%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 41,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3211,
+            "__3": "SUMEDANG",
+            "__4": "1. H. DONY AHMAD MUNIR, S.T., M.M./ERWAN SETIAWAN, S.E.",
+            "__5": "PKB, Demokrat, PPP, PAN",
+            "__6": 275.337,
+            "__7": 643.125,
+            "__8": "42.81%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 42,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3213,
+            "__3": "SUBANG",
+            "__4": "1. H. RUHIMAT/IR. AGUS MASYKUR ROSYADI, S.Si",
+            "__5": "PPP, Nasdem, Demokrat, PKS, PAN, Gerindra",
+            "__6": 310.361,
+            "__7": 778.545,
+            "__8": "39.86%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 43,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3214,
+            "__3": "PURWAKARTA",
+            "__4": "2. Hj. ANNE RATNA MUSTIKA/H. AMING",
+            "__5": "Demokrat, PAN, Nasdem, Hanura, PKB, Golkar",
+            "__6": 218.429,
+            "__7": 496.366,
+            "__8": "44.01%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 44,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3217,
+            "__3": "BANDUNG BARAT",
+            "__4": "3. AA UMBARA SUTISNA, S.IP/HENGKI KURNIAWAN",
+            "__5": "Nasdem, PAN, Demokrat, PKS, PKPI",
+            "__6": 420.137,
+            "__7": 865.7,
+            "__8": "48.53%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 45,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3271,
+            "__3": "KOTA BOGOR",
+            "__4": "3. Dr. H. BIMA ARYA SUGIARTO/Drs. DEDIE A RACHIM, MA",
+            "__5": "Hanura, PAN, Golkar, Demokrat, Nasdem",
+            "__6": 215.708,
+            "__7": 494.321,
+            "__8": "43.64%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 46,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3272,
+            "__3": "KOTA SUKABUMI",
+            "__4": "2. H. ACHMAD FAHMI/H. ANDRI SETIAWAN HAMAMI",
+            "__5": "Demokrat, PKS",
+            "__6": 84.245,
+            "__7": 164.283,
+            "__8": "51.28%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 47,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3273,
+            "__3": "KOTA BANDUNG",
+            "__4": "3. ODED MOHAMAD DANIAL/H. YANA MULYANA",
+            "__5": "PKS, Gerindra",
+            "__6": 634.682,
+            "__7": "1.266.830",
+            "__8": "50.10%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 48,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3274,
+            "__3": "KOTA CIREBON",
+            "__4": "2. Drs. NASHRUDIN AZIS, SH/Dra. Hj. ETI HERAWATI",
+            "__5": "Demokrat, PKB, Nasdem, PKPI, Hanura",
+            "__6": 80.496,
+            "__7": 159.007,
+            "__8": "50.62%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 49,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3275,
+            "__3": "KOTA BEKASI",
+            "__4": "1. DR. RAHMAT EFFENDI/DR. TRI ADHIANTO TJAHYONO, SE, MM",
+            "__5": "PKB, PPP, Demokrat, PAN, Golkar, Hanura",
+            "__6": 697.634,
+            "__7": "1.033.534",
+            "__8": "67.50%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 50,
+            "": 32,
+            "__1": "JAWA BARAT",
+            "__2": 3279,
+            "__3": "KOTA BANJAR",
+            "__4": "1. Hj. ADE UU SUKAESIH, S.IP, M.Si/NANA SURYANA",
+            "__5": "PDIP, Golkar, PKB",
+            "__6": 58.02,
+            "__7": 110.905,
+            "__8": "52.32%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 51,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3302,
+            "__3": "BANYUMAS",
+            "__4": "2. Ir. H. ACHMAD HUSEIN/Drs. H. SADEWO TRI LASTIONO",
+            "__5": "PDIP, Demokrat, Nasdem",
+            "__6": 515.329,
+            "__7": 923.626,
+            "__8": "55.79%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 52,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3308,
+            "__3": "MAGELANG",
+            "__4": "1. ZAENAL ARIFIN, S.IP/EDI CAHYANA, SE",
+            "__5": "Demokrat, PPP, PKB, PDIP, PAN",
+            "__6": 392.789,
+            "__7": 706.535,
+            "__8": "55.59%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 53,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3313,
+            "__3": "KARANGANYAR",
+            "__4": "2. Drs. H. JULIYATMONO, MM./H. ROBER CHRISTANTO, SE",
+            "__5": "Gerindra, PPP, Hanura, PKB, Demokrat, Golkar, PAN, PDIP",
+            "__6": 296.895,
+            "__7": 528.137,
+            "__8": "56.22%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 54,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3319,
+            "__3": "KUDUS",
+            "__4": "5. Ir. H. MUHAMMAD TAMZIL, MT/HM. HARTOPO, ST, MM, MH",
+            "__5": "PKB, Hanura, PPP",
+            "__6": 213.99,
+            "__7": 503.419,
+            "__8": "42.51%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 55,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3323,
+            "__3": "TEMANGGUNG",
+            "__4": "3. H.M. AL KHADZIQ/Drs.R.HERI IBNU WIBOWO",
+            "__5": "Gerindra, Golkar, PAN, PPP",
+            "__6": 258.734,
+            "__7": 476.298,
+            "__8": "54.32%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 56,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3328,
+            "__3": "TEGAL",
+            "__4": "3. Dra. Hj. UMI AZIZAH/SABILILLAH ARDIE, B.Sc",
+            "__5": "PKB",
+            "__6": 518.017,
+            "__7": 730.172,
+            "__8": "70.94%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 57,
+            "": 33,
+            "__1": "JAWA TENGAH",
+            "__2": 3376,
+            "__3": "KOTA TEGAL",
+            "__4": "3. H. DEDY YON SUPRIYONO, S.E., M.M./MUHAMAD JUMADI, S.T., M.M.",
+            "__5": "PPP, PKS, Demokrat, Gerindra, PAN",
+            "__6": 38.091,
+            "__7": 135.868,
+            "__8": "28.04%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 58,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3504,
+            "__3": "TULUNGAGUNG",
+            "__4": "2. SYAHRI MULYO. SE., M.Si/Drs. H. MARYOTO BIROWO, MM",
+            "__5": "PDIP, Nasdem",
+            "__6": 356.201,
+            "__7": 593.976,
+            "__8": "59.97%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 59,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3508,
+            "__3": "LUMAJANG",
+            "__4": "1. H. THORIQUL HAQ, MML/Ir. Hj. INDAH AMPERAWATI, M.Si",
+            "__5": "Gerindra, PKB",
+            "__6": 246.555,
+            "__7": 580.406,
+            "__8": "42.48%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 60,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3511,
+            "__3": "BONDOWOSO",
+            "__4": "1. Drs. KH. SALWA ARIFIN/H. IRWAN BACHTIAR RACHMAT,SE.M.Si",
+            "__5": "PPP, PDIP",
+            "__6": 228.281,
+            "__7": 438.888,
+            "__8": "52.01%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 61,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3513,
+            "__3": "PROBOLINGGO",
+            "__4": "1. Hj. PUPUT TANTRIANA SARI/Drs. H. A. TIMBUL PRIHANJOKO",
+            "__5": "Nasdem, PPP, Gerindra, PDIP, Golkar",
+            "__6": 345.473,
+            "__7": 599.81,
+            "__8": "57.60%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 62,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3514,
+            "__3": "PASURUAN",
+            "__4": "1. MOHAMMAD IRSYAD YUSUF/K.H. A. MUJIB IMRON, SH., MH",
+            "__5": "Golkar, Demokrat, Nasdem, PDIP, Hanura, PKS, Gerindra, PKB, PPP",
+            "__6": 536.721,
+            "__7": 692.114,
+            "__8": "77.55%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 63,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3517,
+            "__3": "JOMBANG",
+            "__4": "1. HJ. MUNDJIDAH WAHAB/SUMRAMBAH",
+            "__5": "PPP, Gerindra, Demokrat",
+            "__6": 308.536,
+            "__7": 638.817,
+            "__8": "48.30%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 64,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3518,
+            "__3": "NGANJUK",
+            "__4": "1. H. NOVI RAHMAN HIDHAYAT, S.Sos., MM./DR. Drs. H. MARHAEN DJUMADI, SE, SH, MM, MBA",
+            "__5": "Hanura, PDIP, PKB",
+            "__6": 303.195,
+            "__7": 554.02,
+            "__8": "54.73%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 65,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3519,
+            "__3": "MADIUN",
+            "__4": "1. H.AHMAD DAWAMI RAGIL SAPUTRO,S.Sos/H.HARI WURYANTO,SH,M.Ak",
+            "__5": "Demokrat, Golkar, PKPI",
+            "__6": 162.012,
+            "__7": 403.35,
+            "__8": "40.17%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 66,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3520,
+            "__3": "MAGETAN",
+            "__4": "3. Dr. Drs. SUPRAWOTO, SH, M.Si/Hj. NANIK ENDANG RUSMINIARTI, M.Pd",
+            "__5": "PPP, Demokrat",
+            "__6": 164.932,
+            "__7": 383.503,
+            "__8": "43.01%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 67,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3522,
+            "__3": "BOJONEGORO",
+            "__4": "3. DR. Hj. ANNA MU'AWANAH/Drs. H. BUDI IRAWANTO, M.Pd.",
+            "__5": "PKB, PDIP",
+            "__6": 236.358,
+            "__7": 769.489,
+            "__8": "30.72%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 68,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3526,
+            "__3": "BANGKALAN",
+            "__4": "3. R. ABDUL LATIF AMIN IMRON/Drs. MOHNI, MM",
+            "__5": "PPP, Golkar, Gerindra",
+            "__6": 243.877,
+            "__7": 544.749,
+            "__8": "44.77%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 69,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3527,
+            "__3": "SAMPANG",
+            "__4": "1. H. SLAMET JUNAIDI/H. ABDULLAH HIDAYAT",
+            "__5": "Nasdem, Golkar, PKS, PDIP, PPP",
+            "__6": 257.121,
+            "__7": 675.856,
+            "__8": "38.04%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 70,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3528,
+            "__3": "PAMEKASAN",
+            "__4": "1. H. BADRUT TAMAM, S.Psi/RAJA'E, S.HI",
+            "__5": "PKS, PAN, PKB, Gerindra",
+            "__6": 257.738,
+            "__7": 486.334,
+            "__8": "53.00%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 71,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3571,
+            "__3": "KOTA KEDIRI",
+            "__4": "2. ABDULLAH ABU BAKAR/LILIK MUHIBBAH",
+            "__5": "Nasdem, PAN",
+            "__6": 85.528,
+            "__7": 148.116,
+            "__8": "57.74%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 72,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3573,
+            "__3": "KOTA MALANG",
+            "__4": "3. SUTIAJI/SOFYAN EDI JARWOKO",
+            "__5": "Golkar, Demokrat",
+            "__6": 165.194,
+            "__7": 370.877,
+            "__8": "44.54%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 73,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3574,
+            "__3": "KOTA PROBOLINGGO",
+            "__4": "4. HABIB HADI ZAINAL ABIDIN, S.Pd., MM., M.HP./MOCH. SOUFIS SUBRI",
+            "__5": "Demokrat, PKB, PKS",
+            "__6": 60.354,
+            "__7": 125.492,
+            "__8": "48.09%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 74,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3576,
+            "__3": "KOTA MOJOKERTO",
+            "__4": "4. Hj. IKA PUSPITASARI, SE/ACHMAD RIZAL ZAKARIA",
+            "__5": "Golkar, Gerindra",
+            "__6": 23.644,
+            "__7": 71.986,
+            "__8": "32.85%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 75,
+            "": 35,
+            "__1": "JAWA TIMUR",
+            "__2": 3577,
+            "__3": "KOTA MADIUN",
+            "__4": "1. Drs. H. MAIDI, SH, MM, M.Pd/INDA RAYA AYU MIKO SAPUTRI, S.E., MIB",
+            "__5": "PDIP, PPP, Demokrat, PKB, PAN",
+            "__6": 39.465,
+            "__7": 102.427,
+            "__8": "38.53%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 76,
+            "": 36,
+            "__1": "BANTEN",
+            "__2": 3602,
+            "__3": "LEBAK",
+            "__4": "1. HJ. ITI OCTAVIA JAYABAYA, SE., MM/H. ADE SUMARDI, SE",
+            "__5": "PAN, Golkar, PDIP, PPP, Demokrat, Nasdem, Gerindra, PKS, PKB, Hanura",
+            "__6": 453.938,
+            "__7": 589.817,
+            "__8": "76.96%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 77,
+            "": 36,
+            "__1": "BANTEN",
+            "__2": 3603,
+            "__3": "TANGERANG",
+            "__4": "1. AHMED ZAKI ISKANDAR Z, B.Bus,SE,M.Si/H. MAD ROMLI, SH.,MM",
+            "__5": "PKPI, Golkar, PDIP, PKS, PKB, Nasdem, Demokrat, Gerindra, Hanura, PPP, PAN, PBB",
+            "__6": 941.804,
+            "__7": "1.124.899",
+            "__8": "83.72%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 78,
+            "": 36,
+            "__1": "BANTEN",
+            "__2": 3671,
+            "__3": "KOTA TANGERANG",
+            "__4": "1. H. ARIEF R WISMANSYAH/Drs. H. SACHRUDIN",
+            "__5": "Golkar, Nasdem, PKB, Hanura, PAN, PPP, PKS, Gerindra, PDIP, Demokrat",
+            "__6": 609.428,
+            "__7": 711.814,
+            "__8": "85.62%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 79,
+            "": 36,
+            "__1": "BANTEN",
+            "__2": 3673,
+            "__3": "KOTA SERANG",
+            "__4": "3. H. SYAFRUDIN, S.Sos, M.Si/H. SUBADRI USULUDIN, SH",
+            "__5": "PKS, PAN, Hanura, PPP",
+            "__6": 108.988,
+            "__7": 281.236,
+            "__8": "38.75%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 80,
+            "": 51,
+            "__1": "BALI",
+            "__2": 5104,
+            "__3": "GIANYAR",
+            "__4": "2. I MADE MAHAYASTRA, SST.Par., MAP./ANAK AGUNG GDE MAYUN, SH.",
+            "__5": "PDIP",
+            "__6": 193.923,
+            "__7": 287.259,
+            "__8": "67.51%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 81,
+            "": 51,
+            "__1": "BALI",
+            "__2": 5105,
+            "__3": "KLUNGKUNG",
+            "__4": "2. I NYOMAN SUWIRTA/I MADE KASTA",
+            "__5": "Gerindra, Nasdem, Golkar, Demokrat",
+            "__6": 92.944,
+            "__7": 121.921,
+            "__8": "76.23%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 82,
+            "": 52,
+            "__1": "NUSA TENGGARA BARAT",
+            "__2": 5201,
+            "__3": "LOMBOK BARAT",
+            "__4": "3. H. FAUZAN KHALID, S.Ag., M.Si/HJ. SUMIATUN",
+            "__5": "PKS, Golkar, Nasdem, PPP, PAN",
+            "__6": 160.441,
+            "__7": 350.339,
+            "__8": "45.80%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 83,
+            "": 52,
+            "__1": "NUSA TENGGARA BARAT",
+            "__2": 5203,
+            "__3": "LOMBOK TIMUR",
+            "__4": "3. Drs. H. MOHAMMAD SUKIMAN AZMY, MM./RUMAKSI SJ., S.H.",
+            "__5": "Hanura, PBB, Nasdem, PPP, PKPI, Golkar, PDIP",
+            "__6": 271.559,
+            "__7": 647.96,
+            "__8": "41.91%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 84,
+            "": 52,
+            "__1": "NUSA TENGGARA BARAT",
+            "__2": 5272,
+            "__3": "KOTA BIMA",
+            "__4": "2. H. MUHAMMAD LUTFI, SE/FERI SOFIYAN, SH",
+            "__5": "Nasdem, Gerindra, PAN, Golkar, PKB, Hanura, PBB, PKPI, PPP",
+            "__6": 39.006,
+            "__7": 88.3,
+            "__8": "44.17%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 85,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5301,
+            "__3": "KUPANG",
+            "__4": "2. Drs. Korinus Masneno/Jerry Manafe, SH, M.Th",
+            "__5": "Nasdem, Golkar",
+            "__6": 53.078,
+            "__7": 159.969,
+            "__8": "33.18%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 86,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5302,
+            "__3": "TIMOR TENGAH SELATAN",
+            "__4": "3. EGUSEM PIETHER TAHUN, ST, MM/JOHNY ARMY KONAY, SH",
+            "__5": "Hanura, Golkar",
+            "__6": 68.488,
+            "__7": 206.178,
+            "__8": "33.22%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 87,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5305,
+            "__3": "ALOR",
+            "__4": "2. Drs. AMON DJOBO/IMRAN DURU, S.Pd",
+            "__5": "Gerindra, Nasdem, PDIP, PKS, PPP, PAN, Demokrat",
+            "__6": 59.917,
+            "__7": 111.723,
+            "__8": "53.63%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 88,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5307,
+            "__3": "SIKKA",
+            "__4": "2. FRANSISKUS ROBERTO DIOGO, S.Sos, MSi./ROMANUS WOGA",
+            "__5": "-",
+            "__6": 63.039,
+            "__7": 157.196,
+            "__8": "40.10%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 89,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5308,
+            "__3": "ENDE",
+            "__4": "2. Ir. MARSELINUS Y.W. PETU/Drs. H. DJAFAR ACHMAD, MM",
+            "__5": "Demokrat, PKS, Golkar, PKPI, PDIP, Nasdem, PKB",
+            "__6": 85.53,
+            "__7": 138.182,
+            "__8": "61.90%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 90,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5314,
+            "__3": "ROTE NDAO",
+            "__4": "3. PAULINA HANING - BULLU, SE/STEFANUS M. SAEK, SE, M.Si",
+            "__5": "Nasdem, Golkar",
+            "__6": 22.098,
+            "__7": 65.49,
+            "__8": "33.74%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 91,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5316,
+            "__3": "NAGEKEO",
+            "__4": "2. dr. JOHANES DON BOSCO DO, M. KES/MARIANUS WAJA, SH",
+            "__5": "Gerindra, PKB",
+            "__6": 23.613,
+            "__7": 76.09,
+            "__8": "31.03%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 92,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5317,
+            "__3": "SUMBA TENGAH",
+            "__4": "2. Drs. PAULUS S. K. LIMU/Ir. DANIEL LANDA",
+            "__5": "PKPI, Hanura",
+            "__6": 10.619,
+            "__7": 37.124,
+            "__8": "28.60%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 93,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5318,
+            "__3": "SUMBA BARAT DAYA",
+            "__4": "3. dr. KORNELIUS KODI METE/MARTHEN CHRISTIAN TAKA, S.IP",
+            "__5": "Hanura, PDIP, PAN, Demokrat",
+            "__6": 67.764,
+            "__7": 143.31,
+            "__8": "47.28%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 94,
+            "": 53,
+            "__1": "NUSA TENGGARA TIMUR",
+            "__2": 5319,
+            "__3": "MANGGARAI TIMUR",
+            "__4": "1. AGAS ANDREAS, SH, M.Hum/Drs. JAGHUR STEFANUS",
+            "__5": "PAN, PBB, PKS",
+            "__6": 46.537,
+            "__7": 142.956,
+            "__8": "32.55%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 95,
+            "": 61,
+            "__1": "KALIMANTAN BARAT",
+            "__2": 6102,
+            "__3": "MEMPAWAH",
+            "__4": "3. HJ.ERLINA, SH.,MH./H.MUHAMMAD PAGI,S.HI.,MM.",
+            "__5": "Hanura, Gerindra, PKS, PBB, Demokrat, Nasdem, Golkar",
+            "__6": 54.945,
+            "__7": 131.944,
+            "__8": "41.64%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 96,
+            "": 61,
+            "__1": "KALIMANTAN BARAT",
+            "__2": 6103,
+            "__3": "SANGGAU",
+            "__4": "2. PAOLUS HADI, S.IP, M.Si/Drs. YOHANES ONTOT, M.Si",
+            "__5": "PDIP, PPP, PAN, Gerindra, PKPI, Hanura, Nasdem, Demokrat",
+            "__6": 134.785,
+            "__7": 235.949,
+            "__8": "57.12%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 97,
+            "": 61,
+            "__1": "KALIMANTAN BARAT",
+            "__2": 6111,
+            "__3": "KAYONG UTARA",
+            "__4": "2. Drs. CITRA DUANI/H. EFFENDI AHMAD, S.Pdi",
+            "__5": "PPP, PKB, Nasdem, Golkar, PKS, Hanura",
+            "__6": 25.074,
+            "__7": 55.623,
+            "__8": "45.08%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 98,
+            "": 61,
+            "__1": "KALIMANTAN BARAT",
+            "__2": 6112,
+            "__3": "KUBU RAYA",
+            "__4": "1. H. MUDA MAHENDRAWAN, SH/SUJIWO, SE",
+            "__5": "PPP, Nasdem, Hanura, Demokrat, PDIP, PKS, Gerindra",
+            "__6": 195.207,
+            "__7": 278.05,
+            "__8": "70.21%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 99,
+            "": 61,
+            "__1": "KALIMANTAN BARAT",
+            "__2": 6171,
+            "__3": "KOTA PONTIANAK",
+            "__4": "2. Ir. H. EDI RUSDI KAMTONO, MM, MT/BAHASAN, SH",
+            "__5": "Golkar, PKPI, Demokrat, Nasdem, Gerindra",
+            "__6": 200.84,
+            "__7": 314.198,
+            "__8": "63.92%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 100,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6203,
+            "__3": "KAPUAS",
+            "__4": "1. Ir. BEN BRAHIM.S. BAHAT,MM.MT/Drs.H.M. NAFIAH IBNOR,MM",
+            "__5": "Gerindra, PDIP, Golkar, PAN, PPP, PKB, Nasdem",
+            "__6": 93.179,
+            "__7": 165.349,
+            "__8": "56.35%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 101,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6205,
+            "__3": "BARITO UTARA",
+            "__4": "1. H.NADALSYAH/SUGIANTO PANALA PUTRA, SH",
+            "__5": "Golkar, Nasdem, Gerindra, PAN, Hanura, PKB, Demokrat, PKS, PPP",
+            "__6": 39.355,
+            "__7": 57.051,
+            "__8": "68.98%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 102,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6206,
+            "__3": "KATINGAN",
+            "__4": "1. SAKARIYAS, SE/SUNARDI",
+            "__5": "PDIP",
+            "__6": 19.998,
+            "__7": 70.877,
+            "__8": "28.22%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 103,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6207,
+            "__3": "SERUYAN",
+            "__4": "3. YULHAIDIR/HJ. ISWANTI, S.E., M.M.",
+            "__5": "PDIP",
+            "__6": 27.6,
+            "__7": 60.427,
+            "__8": "45.67%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 104,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6208,
+            "__3": "SUKAMARA",
+            "__4": "3. H. WINDU SUBAGIO/H. AHMADI, SH",
+            "__5": "PKPI, Golkar, PAN, Hanura, PBB",
+            "__6": 14.203,
+            "__7": 29.983,
+            "__8": "47.37%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 105,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6209,
+            "__3": "LAMANDAU",
+            "__4": "4. H. HENDRA LESMANA/RIKO PORWANTO, S.STP",
+            "__5": "Golkar, Nasdem, PPP",
+            "__6": 24.193,
+            "__7": 39.926,
+            "__8": "60.59%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 106,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6210,
+            "__3": "GUNUNG MAS",
+            "__4": "3. JAYA SAMAYA MONONG, SE, M.Si/Ir. EFRENSIA L.P UMBING, M.Si",
+            "__5": "Demokrat, Golkar",
+            "__6": 22.547,
+            "__7": 55.712,
+            "__8": "40.47%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 107,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6211,
+            "__3": "PULANG PISAU",
+            "__4": "2. H. EDY PRATOWO, S.Sos., MM./PUDJIRUSTATY NARANG",
+            "__5": "Demokrat, Gerindra, PAN, PKPI, PDIP, Golkar",
+            "__6": 35.811,
+            "__7": 68.82,
+            "__8": "52.04%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 108,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6212,
+            "__3": "MURUNG RAYA",
+            "__4": "2. Drs. PERDIE, MA/REJIKINOOR, S.Sos",
+            "__5": "PPP, PDIP, PKB, Nasdem",
+            "__6": 30.27,
+            "__7": 52.855,
+            "__8": "57.27%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 109,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6213,
+            "__3": "BARITO TIMUR",
+            "__4": "3. AMPERA A. Y MEBAS, SE, MM/HABIB SAID ABDUL SALEH",
+            "__5": "Nasdem, PDIP, Hanura, PPP, PKPI",
+            "__6": 24.555,
+            "__7": 57.101,
+            "__8": "43.00%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 110,
+            "": 62,
+            "__1": "KALIMANTAN TENGAH",
+            "__2": 6271,
+            "__3": "KOTA PALANGKARAYA",
+            "__4": "3. FAIRID NAPARIN, SE/Hj. UMI MASTIKAH, SH",
+            "__5": "Demokrat, PPP, PAN, Golkar",
+            "__6": 50.438,
+            "__7": 114.468,
+            "__8": "44.06%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 111,
+            "": 63,
+            "__1": "KALIMANTAN SELATAN",
+            "__2": 6301,
+            "__3": "TANAH LAUT",
+            "__4": "1. Drs. H. SUKAMTA/ABDI RAHMAN, S.Pd",
+            "__5": "Gerindra, PKPI, PKS",
+            "__6": 107.899,
+            "__7": 173.119,
+            "__8": "62.33%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 112,
+            "": 63,
+            "__1": "KALIMANTAN SELATAN",
+            "__2": 6305,
+            "__3": "TAPIN",
+            "__4": "1. DRS. H. MUHAMMAD ARIFIN ARPAN, MM/H. SYAFRUDIN NOOR, SE, S.Sos",
+            "__5": "PAN, PPP, Gerindra, Demokrat, PDIP, PKB, Golkar, PKS",
+            "__6": 85.826,
+            "__7": 106.104,
+            "__8": "80.89%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 113,
+            "": 63,
+            "__1": "KALIMANTAN SELATAN",
+            "__2": 6306,
+            "__3": "HULU SUNGAI SELATAN",
+            "__4": "2. Drs. H. ACHMAD FIKRY, M.AP/SYAMSURI ARSYAD, S.AP",
+            "__5": "Demokrat, Golkar, PBB, Gerindra, Nasdem, PKS",
+            "__6": 78.281,
+            "__7": 119.573,
+            "__8": "65.47%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 114,
+            "": 63,
+            "__1": "KALIMANTAN SELATAN",
+            "__2": 6309,
+            "__3": "TABALONG",
+            "__4": "3. Drs. H. ANANG SYAKHFIANI, M.Si/Drs. H. MAWARDI, M.Si",
+            "__5": "PBB, Demokrat, PKPI, PKS, PKB, Nasdem, PAN, Golkar",
+            "__6": 44.736,
+            "__7": 124.533,
+            "__8": "35.92%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 115,
+            "": 64,
+            "__1": "KALIMANTAN TIMUR",
+            "__2": 6409,
+            "__3": "PENAJAM PASER UTARA",
+            "__4": "3. ABDUL GAFUR/Ir. H. HAMDAM",
+            "__5": "Nasdem, Demokrat, PKS",
+            "__6": 37.445,
+            "__7": 82.507,
+            "__8": "45.38%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 116,
+            "": 65,
+            "__1": "KALIMANTAN UTARA",
+            "__2": 6571,
+            "__3": "KOTA TARAKAN",
+            "__4": "2. dr. Khairul, M.Kes/Effendhi Djuprianto",
+            "__5": "Hanura, Demokrat, Nasdem",
+            "__6": 28.208,
+            "__7": 90.751,
+            "__8": "31.08%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 117,
+            "": 71,
+            "__1": "SULAWESI UTARA",
+            "__2": 7102,
+            "__3": "MINAHASA",
+            "__4": "2. Ir. ROYKE OCTAVIAN RORING, M.Si/ROBBY DONDOKAMBEY, S.Si",
+            "__5": "Hanura, PDIP, Gerindra, Demokrat",
+            "__6": 132.152,
+            "__7": 203.052,
+            "__8": "65.08%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 118,
+            "": 71,
+            "__1": "SULAWESI UTARA",
+            "__2": 7104,
+            "__3": "KEPULAUAN TALAUD",
+            "__4": "1. dr. ELLY ENGELBERT LASUT, ME/MOKTAR ARUNDE PARAPAGA",
+            "__5": "Nasdem, Gerindra, PKPI",
+            "__6": 22.656,
+            "__7": 57.992,
+            "__8": "39.07%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 119,
+            "": 71,
+            "__1": "SULAWESI UTARA",
+            "__2": 7107,
+            "__3": "MINAHASA TENGGARA",
+            "__4": "1. JAMES SUMENDAP,SH/JESAJA JOCKE OSCAR LEGI",
+            "__5": "PDIP, Demokrat, Hanura, PAN, PPP, Golkar, Gerindra, PKPI",
+            "__6": 47.499,
+            "__7": 70.597,
+            "__8": "67.28%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 120,
+            "": 71,
+            "__1": "SULAWESI UTARA",
+            "__2": 7108,
+            "__3": "BOLAANG MONGONDOW UTARA",
+            "__4": "2. Drs. Hi. DEPRI PONTOH/Drs. Hi. AMIN LASENA, M.AP",
+            "__5": "PKB, PPP, Demokrat, Gerindra, PDIP",
+            "__6": 19.645,
+            "__7": 49.368,
+            "__8": "39.79%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 121,
+            "": 71,
+            "__1": "SULAWESI UTARA",
+            "__2": 7109,
+            "__3": "KEP. SIAU TAGULANDANG BIARO",
+            "__4": "4. EVANGELIAN SASINGEN/Drs. JOHN HEIT PALANDUNG, M.Si",
+            "__5": "PDIP",
+            "__6": 21.103,
+            "__7": 45.764,
+            "__8": "46.11%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 122,
+            "": 71,
+            "__1": "SULAWESI UTARA",
+            "__2": 7174,
+            "__3": "KOTA KOTAMOBAGU",
+            "__4": "1. Ir. Hj. TATONG BARA/NAYODO KOERNIAWAN, SH",
+            "__5": "Hanura, PDIP, PKB, Golkar, Demokrat, PKS, Gerindra, PAN",
+            "__6": 37.408,
+            "__7": 68.968,
+            "__8": "54.24%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 123,
+            "": 72,
+            "__1": "SULAWESI TENGAH",
+            "__2": 7203,
+            "__3": "DONGGALA",
+            "__4": "2. Drs. KASMAN LASSA, SH/MOH. YASIN, S.Sos",
+            "__5": "Nasdem, PAN, PKS, PPP, Gerindra",
+            "__6": 53.042,
+            "__7": 153.094,
+            "__8": "34.65%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 124,
+            "": 72,
+            "__1": "SULAWESI TENGAH",
+            "__2": 7206,
+            "__3": "MOROWALI",
+            "__4": "1. Drs TASLIM/DR. H. NAJAMUDIN, S.Ag, S.Pd, M.Pd",
+            "__5": "PKS, Golkar, Nasdem, Hanura",
+            "__6": 26.325,
+            "__7": 73.673,
+            "__8": "35.73%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 125,
+            "": 72,
+            "__1": "SULAWESI TENGAH",
+            "__2": 7208,
+            "__3": "PARIGI MOUTONG",
+            "__4": "1. H. SAMSURIZAL TOMBOLOTUTU/BADRUN NGGAI, SE",
+            "__5": "PAN, PDIP, Gerindra, PBB, PPP, PKS",
+            "__6": 99.048,
+            "__7": 221.41,
+            "__8": "44.74%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 126,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7303,
+            "__3": "BANTAENG",
+            "__4": "3. DR. H. ILHAM SYAH AZIKIN, M. Si/Drs. H. SAHABUDDIN",
+            "__5": "Golkar, PKS, Nasdem, Demokrat, Gerindra, PKPI",
+            "__6": 48.549,
+            "__7": 105.843,
+            "__8": "45.87%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 127,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7304,
+            "__3": "JENEPONTO",
+            "__4": "3. Drs. H. IKSAN ISKANDAR, M.Si/H. PARIS YASIR, SE",
+            "__5": "PPP, PDIP, Nasdem, Golkar, Gerindra",
+            "__6": 90.245,
+            "__7": 209.954,
+            "__8": "42.98%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 128,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7307,
+            "__3": "SINJAI",
+            "__4": "1. ANDI SETO GADHISTA ASAPA/A. KARTINI",
+            "__5": "Golkar, PKB, Gerindra",
+            "__6": 51.157,
+            "__7": 93.981,
+            "__8": "54.43%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 129,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7308,
+            "__3": "BONE",
+            "__4": "1. DR. H. A. FAHSAR MAHDIN PADJALANGI, M.Si./Drs. H. AMBO DALLE, MM.",
+            "__5": "Golkar, Nasdem, Gerindra, PBB, PPP, PDIP, PKS, Demokrat, PAN, Hanura, PKB",
+            "__6": 232.955,
+            "__7": 369.49,
+            "__8": "63.05%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 130,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7313,
+            "__3": "WAJO",
+            "__4": "1. Dr. H. AMRAN MAHMUD, S,Sos., M.Si/H. AMRAN, SE",
+            "__5": "PKS, PPP, PDIP, PBB, Demokrat, Nasdem, PAN",
+            "__6": 130.035,
+            "__7": 224.375,
+            "__8": "57.95%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 131,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7314,
+            "__3": "SIDENRENG RAPPANG",
+            "__4": "2. Ir. DOLLAH MANDO/Ir. MAHMUD YUSUF",
+            "__5": "Demokrat, Gerindra",
+            "__6": 105.621,
+            "__7": 173.091,
+            "__8": "61.02%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 132,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7315,
+            "__3": "PINRANG",
+            "__4": "2. H.A.IRWAN HAMID,S.Sos/Drs.H. ALIMIN,M.Si",
+            "__5": "PKB, PDIP, Demokrat",
+            "__6": 86.256,
+            "__7": 213.074,
+            "__8": "40.48%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 133,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7316,
+            "__3": "ENREKANG",
+            "__4": "1. DRS. H. MUSLIMIN BANDO, M.Pd/ASMAN, SE",
+            "__5": "Hanura, Golkar, PAN, Demokrat, Gerindra, Nasdem, PDIP",
+            "__6": 77.586,
+            "__7": 113.412,
+            "__8": "68.41%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 134,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7317,
+            "__3": "LUWU",
+            "__4": "1. Drs. H. BASMIN MATTAYANG, M.Pd/SYUKUR BIJAK",
+            "__5": "PDIP, Nasdem, PKS, PBB, PPP, PKPI, Demokrat, Hanura",
+            "__6": 117.23,
+            "__7": 193.436,
+            "__8": "60.60%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 135,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7372,
+            "__3": "KOTA PARE PARE",
+            "__4": "1. Dr. H. M. TAUFAN PAWE, S.H.,M.H./H. PANGERANG RAHIM",
+            "__5": "PDIP, Gerindra, PAN, Golkar, Demokrat",
+            "__6": 39.966,
+            "__7": 78.074,
+            "__8": "51.19%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 136,
+            "": 73,
+            "__1": "SULAWESI SELATAN",
+            "__2": 7373,
+            "__3": "KOTA PALOPO",
+            "__4": "1. Drs. H. M. JUDAS AMIR, MH/Ir. H. RAHMAT MASRI BANDASO, M.Si",
+            "__5": "PAN, Nasdem, Demokrat, PKS, PKB, PBB, PPP, PDIP, Golkar",
+            "__6": 51.88,
+            "__7": 85.871,
+            "__8": "60.42%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 137,
+            "": 74,
+            "__1": "SULAWESI TENGGARA",
+            "__2": 7401,
+            "__3": "KOLAKA",
+            "__4": "1. H. AHMAD SAFEI, SH, MH/H. MUHAMMAD JAYADIN, SE., M.E",
+            "__5": "Gerindra, Nasdem, PKB, PBB, PKPI, Hanura, PAN, Demokrat, PPP, PDIP",
+            "__6": 72.987,
+            "__7": 116.148,
+            "__8": "62.84%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 138,
+            "": 74,
+            "__1": "SULAWESI TENGGARA",
+            "__2": 7402,
+            "__3": "KONAWE",
+            "__4": "4. KERY SAIFUL KONGGOASA/GUSLI TOPAN SABARA, ST., MM",
+            "__5": "Gerindra, PAN, Nasdem",
+            "__6": 65.766,
+            "__7": 133.049,
+            "__8": "49.43%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 139,
+            "": 74,
+            "__1": "SULAWESI TENGGARA",
+            "__2": 7472,
+            "__3": "KOTA BAU BAU",
+            "__4": "2. Dr. H.A.S TAMRIN, MH/LA ODE AHMAD MONIANSE",
+            "__5": "PAN, Nasdem, Golkar, PDIP",
+            "__6": 23.573,
+            "__7": 75.773,
+            "__8": "31.11%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 140,
+            "": 75,
+            "__1": "GORONTALO",
+            "__2": 7505,
+            "__3": "GORONTALO UTARA",
+            "__4": "1. DR. H. INDRA YASIN, SH., MH/THARIQ MODANGGU, S.Ag., M.Pd.i",
+            "__5": "PKS, PDIP, PPP, PAN, Gerindra",
+            "__6": 31.466,
+            "__7": 71.984,
+            "__8": "43.71%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 141,
+            "": 75,
+            "__1": "GORONTALO",
+            "__2": 7571,
+            "__3": "KOTA GORONTALO",
+            "__4": "2. H. MARTEN A. TAHA, SE., M.Ec Dev/RYAN FAHRICHSAN KONO, B.Com",
+            "__5": "PBB, Demokrat, Golkar",
+            "__6": 42.398,
+            "__7": 102.711,
+            "__8": "41.28%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 142,
+            "": 76,
+            "__1": "SULAWESI BARAT",
+            "__2": 7603,
+            "__3": "MAMASA",
+            "__4": "1. Drs. RAMLAN BADAWI, MH/MARTHINUS TIRANDA",
+            "__5": "PPP, PBB, PAN, PKPI, PKS, Nasdem, Golkar, PDIP, PKB, Demokrat",
+            "__6": 48.552,
+            "__7": 79.31,
+            "__8": "61.22%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 143,
+            "": 76,
+            "__1": "SULAWESI BARAT",
+            "__2": 7604,
+            "__3": "POLEWALI MANDAR",
+            "__4": "2. H. A. IBRAHIM MASDAR/Drs. H. M. NATSIR RAHMAT, MM",
+            "__5": "PDIP, PKB, PKPI, PKS, PAN, Golkar, Gerindra",
+            "__6": 121.328,
+            "__7": 219.217,
+            "__8": "55.35%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 144,
+            "": 81,
+            "__1": "MALUKU",
+            "__2": 8102,
+            "__3": "MALUKU TENGGARA",
+            "__4": "3. MUHAMAD THAHER HANUBUN/Ir. PETRUS BERUATWARIN, M.Si",
+            "__5": "Gerindra, PAN, PKB, PKS",
+            "__6": 23.944,
+            "__7": 55.71,
+            "__8": "42.98%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 145,
+            "": 81,
+            "__1": "MALUKU",
+            "__2": 8172,
+            "__3": "KOTA TUAL",
+            "__4": "2. ADAM RAHAYAAN, S.Ag, M.Si/USMAN TAMNGE",
+            "__5": "Nasdem, Gerindra, PAN, PKS, PKB, Demokrat",
+            "__6": 15.956,
+            "__7": 32.155,
+            "__8": "49.62%"
+          },
+          {
+            "DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018": 146,
+            "": 91,
+            "__1": "PAPUA",
+            "__2": 9106,
+            "__3": "BIAK NUMFOR",
+            "__4": "2. HERRY ARIO NAAP, S.Si.,M.Pd./NEHEMIA WOSPAKRIK, SE.,MM.,B.Sc.",
+            "__5": "Golkar, PDIP, PBB, Hanura",
+            "__6": 24.892,
+            "__7": 58.503,
+            "__8": "42.55%"
+          }
+        ];
+
+        const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+        jsonData.forEach(item => {
+            if (item["DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018"] !== "No. ") {
+                const row = tableBody.insertRow();
+                row.insertCell().textContent = item["DAFTAR CALON TERPILIH HASIL PENETAPAN SUARA PILKADA 2018"];
+                row.insertCell().textContent = item[""];
+                row.insertCell().textContent = item["__1"];
+                row.insertCell().textContent = item["__2"];
+                row.insertCell().textContent = item["__3"];
+                row.insertCell().textContent = item["__4"];
+                row.insertCell().textContent = item["__5"];
+                row.insertCell().textContent = item["__6"];
+                row.insertCell().textContent = item["__7"];
+                row.insertCell().textContent = item["__8"];
+            }
+        });
+
+        window.addEventListener('load', function() {
+            document.querySelector('.table-responsive').classList.add('loaded');
+        });
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        scrollToTopBtn.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
