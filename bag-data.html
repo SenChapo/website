@@ -1956,68 +1956,68 @@
         };
 
         const rowsPerPage = 10; 
-      let currentPage = 1;
-      const pagination = document.getElementById('pagination');
-  
-      function displayRows(page) {
-          const rows = tableBody.getElementsByTagName('tr');
-          const totalRows = rows.length;
-          const totalPages = Math.ceil(totalRows / rowsPerPage);
-  
-          for (let i = 0; i < totalRows; i++) {
-              rows[i].style.display = 'none'; 
-          }
-  
-          const start = (page - 1) * rowsPerPage;
-          const end = start + rowsPerPage;
-  
-          for (let i = start; i < end && i < totalRows; i++) {
-              rows[i].style.display = ''; 
-          }
-  
-          document.getElementById('prev').classList.toggle('disabled', page === 1);
-          document.getElementById('next').classList.toggle('disabled', page === totalPages);
-          for (let i = 1; i <= totalPages; i++) {
-              const pageItem = document.getElementById('page' + i);
-              if (pageItem) {
-                  pageItem.classList.toggle('active', i === page);
-              }
-          }
-      }
-  
-      function setupPagination() {
-          const totalRows = tableBody.getElementsByTagName('tr').length;
-          const totalPages = Math.ceil(totalRows / rowsPerPage);
-  
-          for (let i = 1; i <= totalPages; i++) {
-              const pageItem = document.getElementById('page' + i);
-              if (pageItem) {
-                  pageItem.onclick = function() {
-                      currentPage = i;
-                      displayRows(currentPage);
-                  };
-              }
-          }
-  
-          document.getElementById('prev').onclick = function() {
-              if (currentPage > 1) {
-                  currentPage--;
-                  displayRows(currentPage);
-              }
-          };
-  
-          document.getElementById('next').onclick = function() {
-              if (currentPage < totalPages) {
-                  currentPage++;
-                  displayRows(currentPage);
-              }
-          };
-      }
-  
-      window.onload = function() {
-          setupPagination();
-          displayRows(currentPage);
-      };
+        let currentPage = 1;
+        const pagination = document.getElementById('pagination');
+    
+        function displayRows(page) {
+            const rows = tableBody.getElementsByTagName('tr');
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+    
+            for (let i = 0; i < totalRows; i++) {
+                rows[i].style.display = 'none'; 
+            }
+    
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+    
+            for (let i = start; i < end && i < totalRows; i++) {
+                rows[i].style.display = ''; 
+            }
+    
+            document.getElementById('prev').classList.toggle('disabled', page === 1);
+            document.getElementById('next').classList.toggle('disabled', page === totalPages);
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.getElementById('page' + i);
+                if (pageItem) {
+                    pageItem.classList.toggle('active', i === page);
+                }
+            }
+        }
+    
+        function setupPagination() {
+            const totalRows = tableBody.getElementsByTagName('tr').length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+    
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.getElementById('page' + i);
+                if (pageItem) {
+                    pageItem.onclick = function() {
+                        currentPage = i;
+                        displayRows(currentPage);
+                    };
+                }
+            }
+    
+            document.getElementById('prev').onclick = function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayRows(currentPage);
+                }
+            };
+    
+            document.getElementById('next').onclick = function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayRows(currentPage);
+                }
+            };
+        }
+    
+        window.onload = function() {
+            setupPagination();
+            displayRows(currentPage);
+        };
 
         scrollToTopBtn.onclick = function() {
             window.scrollTo({top: 0, behavior: 'smooth'});
