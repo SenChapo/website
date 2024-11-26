@@ -152,7 +152,15 @@
         </table>
       </div>
   </div>
-
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center" id="pagination">
+        <li class="page-item disabled" id="prev"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item active" id="page1"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" id="page2"><a class="page-link" href="#">2</a></li>
+        <li class="page-item" id="page3"><a class="page-link" href="#">3</a></li>
+        <li class="page-item" id="next"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
   <button id="scrollToTopBtn" style="display: none;">Kembali ke Atas</button>
 
   <footer style="background-color: rgb(38, 39, 43); color: #fff; text-align: center; padding: 20px; position: relative; bottom: 0; width: 100%;">
@@ -1951,6 +1959,72 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         };
     </script>
+    <script>
+      const rowsPerPage = 10; 
+      let currentPage = 1;
+      const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+      const pagination = document.getElementById('pagination');
+  
+      function displayRows(page) {
+          const rows = tableBody.getElementsByTagName('tr');
+          const totalRows = rows.length;
+          const totalPages = Math.ceil(totalRows / rowsPerPage);
+  
+          for (let i = 0; i < totalRows; i++) {
+              rows[i].style.display = 'none'; 
+          }
+  
+          const start = (page - 1) * rowsPerPage;
+          const end = start + rowsPerPage;
+  
+          for (let i = start; i < end && i < totalRows; i++) {
+              rows[i].style.display = ''; 
+          }
+  
+          document.getElementById('prev').classList.toggle('disabled', page === 1);
+          document.getElementById('next').classList.toggle('disabled', page === totalPages);
+          for (let i = 1; i <= totalPages; i++) {
+              const pageItem = document.getElementById('page' + i);
+              if (pageItem) {
+                  pageItem.classList.toggle('active', i === page);
+              }
+          }
+      }
+  
+      function setupPagination() {
+          const totalRows = tableBody.getElementsByTagName('tr').length;
+          const totalPages = Math.ceil(totalRows / rowsPerPage);
+  
+          for (let i = 1; i <= totalPages; i++) {
+              const pageItem = document.getElementById('page' + i);
+              if (pageItem) {
+                  pageItem.onclick = function() {
+                      currentPage = i;
+                      displayRows(currentPage);
+                  };
+              }
+          }
+  
+          document.getElementById('prev').onclick = function() {
+              if (currentPage > 1) {
+                  currentPage--;
+                  displayRows(currentPage);
+              }
+          };
+  
+          document.getElementById('next').onclick = function() {
+              if (currentPage < totalPages) {
+                  currentPage++;
+                  displayRows(currentPage);
+              }
+          };
+      }
+  
+      window.onload = function() {
+          setupPagination();
+          displayRows(currentPage);
+      };
+  </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
