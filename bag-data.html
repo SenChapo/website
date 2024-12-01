@@ -109,7 +109,18 @@
                 background-color: transparent;
             }
             .filterInput {
-              color: red;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                padding: 10px;
+                font-size: 16px;
+                margin-bottom: 20px;
+                transition: border-color 0.3s;
+            }
+
+            .filterInput:focus {
+                border-color: rgba(233, 5, 5, 0.904);
+                outline: none;
+                box-shadow: 0 0 5px rgba(233, 5, 5, 0.5);
             }
             @media (max-width: 768px) {
                 h1 {
@@ -152,8 +163,7 @@
     </nav>
     <div class="container-fluid mt-5" style="padding: 20px;">
       <h1 class="text-center mb-4" style="font-size: 45px;">Daftar Calon Terpilih Hasil <br> Penetapan Suara Pilkada 2018</h1>
-      <input type="text" id="filterInput" placeholder="Cari Provinsi..." class="form-control mb-3" onkeyup="filterTable()">
-      <div class="table-responsive">
+      <input type="text" id="filterInput" placeholder="Cari Provinsi..." class="form-control mb-3 filterInput" onkeyup="filterTable()">      <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover mt-4 mx-auto" id="data-table" >
           <thead class="thead-dark">
             <tr>
