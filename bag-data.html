@@ -108,20 +108,26 @@
                 color: #6c757d;
                 background-color: transparent;
             }
+
             .filterInput {
-                border: 1px solid #ced4da;
-                border-radius: 4px;
-                padding: 10px;
-                font-size: 16px;
-                margin-bottom: 20px;
-                transition: border-color 0.3s;
+                width: 250px;
+                background-image: url('sources/batik.jpg');
+                border: 2px solid rgb(0, 0, 0);
+                border-radius: 5px;
             }
 
-            .filterInput:focus {
-                border-color: rgba(233, 5, 5, 0.904);
-                outline: none;
-                box-shadow: 0 0 5px rgba(233, 5, 5, 0.5);
+            .background-dropdown {
+                width: 8vh; 
+                margin-right: 2vh;
+                background-image: url('sources/batik.jpg');
+                border: 2px solid rgb(0, 0, 0);
+                border-radius: 5px;
             }
+
+            .pencarian {
+              margin-left: 15vh;
+            }
+
             @media (max-width: 768px) {
                 h1 {
                   color: black;
@@ -134,6 +140,9 @@
                 }
                 .table {
                   max-width: 100%; 
+                }
+                .pencarian {
+                  margin-left: 1vh;
                 }
             }
         </style>
@@ -163,8 +172,19 @@
     </nav>
     <div class="container-fluid mt-5" style="padding: 20px;">
       <h1 class="text-center mb-4" style="font-size: 45px;">Daftar Calon Terpilih Hasil <br> Penetapan Suara Pilkada 2018</h1>
-      <input type="text" id="filterInput" placeholder="Cari Provinsi..." class="form-control mb-3 filterInput" onkeyup="filterTable()">      <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover mt-4 mx-auto" id="data-table" >
+      <div class="pencarian d-flex justify-content-between mb-3">
+        <div class="pencarian d-flex align-items-center">
+            <select id="rowsPerPage" class="form-control background-dropdown" onchange="updateRowsPerPage()">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <input type="text" id="filterInput" placeholder="Cari Provinsi..." class="form-control filterInput" onkeyup="filterTable()">
+        </div>
+    </div>     
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-hover mt-4 mx-auto" id="data-table" >
           <thead class="thead-dark">
             <tr>
                 <th>No.</th>
@@ -183,6 +203,7 @@
           </tbody>
         </table>
       </div>
+    </div>
   </div>
 
   <nav aria-label="Page navigation">
@@ -1983,9 +2004,16 @@
             }
         };
 
-        const rowsPerPage = 10;
+        let rowsPerPage = 10;
         let currentPage = 1;
         const pagination = document.getElementById('pagination');
+
+        function updateRowsPerPage() {
+            const select = document.getElementById('rowsPerPage');
+            rowsPerPage = parseInt(select.value);
+            currentPage = 1;
+            displayRows(currentPage);
+        }
 
         function displayRows(page) {
             const rows = tableBody.getElementsByTagName('tr');
@@ -2020,15 +2048,29 @@
             };
             pagination.appendChild(prevItem);
 
-            for (let i = 1; i <= totalPages; i++) {
-                const pageItem = document.createElement('li');
-                pageItem.className = 'page-item ' + (i === currentPage ? 'active' : '');
-                pageItem.innerHTML = '<a class="page-link" href="#">' + i + '</a>';
-                pageItem.onclick = function() {
-                    currentPage = i;
-                    displayRows(currentPage);
-                };
-                pagination.appendChild(pageItem);
+            const maxVisiblePages = 3;
+            let startPage, endPage;
+
+            if (totalPages <= maxVisiblePages + 2) {
+                startPage = 1;
+                endPage = totalPages;
+            } else {
+                startPage = Math.max(1, currentPage - 1);
+                endPage = Math.min(totalPages, currentPage + 1);
+
+                if (startPage > 2) {
+                    pagination.appendChild(createPageItem(1));
+                    pagination.appendChild(createEllipsis());
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    pagination.appendChild(createPageItem(i));
+                }
+
+                if (endPage < totalPages - 1) {
+                    pagination.appendChild(createEllipsis());
+                    pagination.appendChild(createPageItem(totalPages));
+                }
             }
 
             const nextItem = document.createElement('li');
@@ -2041,6 +2083,24 @@
                 }
             };
             pagination.appendChild(nextItem);
+        }
+
+        function createPageItem(pageNumber) {
+            const pageItem = document.createElement('li');
+            pageItem.className = 'page-item ' + (pageNumber === currentPage ? 'active' : '');
+            pageItem.innerHTML = '<a class="page-link" href="#">' + pageNumber + '</a>';
+            pageItem.onclick = function() {
+                currentPage = pageNumber;
+                displayRows(currentPage);
+            };
+            return pageItem;
+        }
+
+        function createEllipsis() {
+            const ellipsisItem = document.createElement('li');
+            ellipsisItem.className = 'page-item disabled';
+            ellipsisItem.innerHTML = '<span class="page-link">...</span>';
+            return ellipsisItem;
         }
         
         function filterTable() {
@@ -2056,6 +2116,11 @@
                     const txtValue = provinceCell.textContent || provinceCell.innerText;
                     rows[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
                 }       
+            }
+
+            if (filter === "") {
+                currentPage = 1;
+                displayRows(currentPage);
             }
         }
 
